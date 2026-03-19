@@ -6,7 +6,6 @@ from app.core.database import engine, SessionLocal
 from app.core.config import settings
 from app.models.base import Base
 
-# Bütün modelləri import et — cədvəllər yaransın
 from app.models.user import User, AdminUser, UserRole
 from app.models.book import Book
 from app.models.borrow_record import BorrowRecord
@@ -21,8 +20,8 @@ def create_tables():
 
 def create_first_admin():
     """
-    Sistem ilk dəfə işə düşəndə avtomatik admin yarat.
-    Singleton pattern — bir dəfə işləyir.
+    Sistem ilk dəfə işə düşəndə avtomatik admin yaradılması üçün configdi bu.
+    Singleton pattern mentiqi ilə işləyir bu.
     """
     from app.services.auth_service import AuthService
     db: Session = SessionLocal()
@@ -56,7 +55,7 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS
+# CORS - frontend üçün gelecekde düzeldile biler
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

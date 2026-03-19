@@ -17,12 +17,14 @@ def reserve_book(
     service = ReservationService(db)
     reservation = service.reserve_book(data.user_id, data.book_id)
 
-    # Növbə pozisiyasını hesabla
+    # Növbə pozisiyasını hesablayir
     all_reservations = service.get_book_reservations(data.book_id)
-    position = next(
-        (i + 1 for i, r in enumerate(all_reservations) if r.id == reservation.id),
-        None
-    )
+
+    position = None
+    for i, r in enumerate(all_reservations):
+        if r.id == reservation.id:
+            position = i + 1
+            break
 
     response = ReservationResponse(
         id=reservation.id,

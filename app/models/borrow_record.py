@@ -28,7 +28,7 @@ class BorrowRecord(Base, TimestampMixin):
 
     @property
     def days_overdue(self):
-        """Neçə gün gecikib?"""
+        #Neçə gün gecikib üçün
         if not self.is_overdue:
             return 0
         delta = datetime.utcnow() - self.due_date

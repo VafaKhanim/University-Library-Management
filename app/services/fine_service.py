@@ -1,6 +1,6 @@
 from app.models.borrow_record import BorrowRecord
 
-FINE_PER_DAY = 0.50
+FINE_PER_DAY = 0.50 #cerime deyerini sonra burdan deyismek olar
 
 class FineService:
 

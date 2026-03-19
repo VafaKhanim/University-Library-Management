@@ -5,6 +5,6 @@ class SMSNotification(NotificationStrategy):
     """Strategy Pattern — SMS implementasiyası."""
 
     def send(self, recipient: str, subject: str, message: str) -> bool:
-        # Twilio və ya digər SMS API
+        # Twilio və ya digər SMS API gelecekde
         print(f"[SMS] To: {recipient} | Message: {message}")
         return True

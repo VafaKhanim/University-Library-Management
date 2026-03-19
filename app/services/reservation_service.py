@@ -9,12 +9,11 @@ from app.notifications.email_notification import EmailNotification
 
 class ReservationQueue:
     """
-    Observer Pattern: kitab mövcud olanda növbədəkilərə xəbər verir.
+    Observer Pattern istifade olunub burda - kitab mövcud olanda növbədəkilərə xəbər vermek üçündür.
     """
 
     def __init__(self, db: Session):
         self._db = db
-        # Strategy Pattern — default email bildirişi
         self._notifier = NotificationContext(EmailNotification())
 
     def add_user(self, user: User, book: Book) -> Reservation:

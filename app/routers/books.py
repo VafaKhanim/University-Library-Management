@@ -46,7 +46,6 @@ def get_book(
     db: Session = Depends(get_db),
     admin = Depends(get_current_admin)
 ):
-    """Bir kitab"""
     service = BookService(db)
     return service.get_book_by_id(book_id)
 

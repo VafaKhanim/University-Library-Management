@@ -4,9 +4,8 @@ from app.models.base import Base, TimestampMixin
 
 
 class Reservation(Base, TimestampMixin):
-    """
-    Rezervasiya modeli — FIFO növbəsi.
-    """
+    #Rezervasiya modeli — FIFO növbəsi.
+
     __tablename__ = "reservations"
 
     id = Column(Integer, primary_key=True, index=True)

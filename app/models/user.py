@@ -10,25 +10,21 @@ class UserRole(enum.Enum):
     TEACHER = "teacher"
 
 
-# ABSTRACTION — Abstract base class
+# Abstract base classdı bu
 class LibraryUser(ABC):
     @abstractmethod
     def get_borrow_limit(self) -> int:
-        """Neçə kitab götürə bilər — hər tip özü implement edir (Polymorphism)"""
+        """Neçə kitab götürə bilər — implement edilir diger classlar terefinden (Polymorphism)"""
         pass
 
     @abstractmethod
     def get_borrow_duration(self) -> int:
-        """Neçə günlüyünə götürə bilər — hər tip özü implement edir (Polymorphism)"""
+        """bu da eyni şekilde - burda max neçə günlük kitab götürülə bilərdi"""
         pass
 
 
-# INHERITANCE — Student və Teacher User-dən miras alır
+# INHERITANCE burda olur
 class Student(LibraryUser):
-    """
-    Tələbə — LibraryUser-dən miras alır.
-    Polymorphism: öz borrow limit və duration-ını implement edir.
-    """
     def get_borrow_limit(self) -> int:
         return 3
     def get_borrow_duration(self) -> int:
@@ -45,9 +41,9 @@ class Teacher(LibraryUser):
 
 # DB Model
 class User(Base, TimestampMixin):
-    """
-    Encapsulation: _role, _borrowed_count private atributlar kimi
-    """
+
+    #Encapsulation nümunəsidir bu -- _role, _borrowed_count private atributlar kimi
+
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
@@ -57,14 +53,12 @@ class User(Base, TimestampMixin):
     role = Column(Enum(UserRole), nullable=False)
     is_active = Column(Boolean, default=True)
 
-    # Relationships — Composition
     borrow_records = relationship("BorrowRecord", back_populates="user", lazy="dynamic")
     reservations = relationship("Reservation", back_populates="user", lazy="dynamic")
 
-    # Encapsulation — private atributlar
+    # Encapsulation — private atributlar burda işlənib
     @property
     def _borrowed_count(self) -> int:
-        """Hal-hazırda aktiv götürmələrin sayı"""
         return self.borrow_records.filter_by(returned=False).count()
 
     @property
@@ -73,8 +67,8 @@ class User(Base, TimestampMixin):
 
     def get_library_user(self) -> LibraryUser:
         """
-        Factory method — role-a görə doğru OOP obyektini qaytarır.
-        Polymorphism burada işlənir.
+        Factory method işlənib — role-a görə doğru OOP obyektini qaytarır.
+        Polymorphism burda işlənir.
         """
         if self.role == UserRole.STUDENT:
             return Student()
@@ -87,7 +81,6 @@ class User(Base, TimestampMixin):
         return self.get_library_user().get_borrow_duration()
 
     def can_borrow(self) -> bool:
-        """Daha kitab götürə bilərmi?"""
         return self._borrowed_count < self.get_borrow_limit()
 
     def __repr__(self):
@@ -97,7 +90,6 @@ class User(Base, TimestampMixin):
 
 # Admin Model — kitabxana işçisi
 class AdminUser(Base, TimestampMixin):
-    """Kitabxana işçisi — sistemə daxil olur və hər şeyi idarə edir"""
     __tablename__ = "admin_users"
 
     id = Column(Integer, primary_key=True, index=True)

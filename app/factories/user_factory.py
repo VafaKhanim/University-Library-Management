@@ -3,9 +3,9 @@ from app.models.user import User, UserRole
 
 class UserFactory:
     """
-    Factory Pattern — İstifadəçi yaratmaq üçün fabrika.
-    Admin birbaşa User() yaratmaq əvəzinə bu factory-dən istifadə edir.
-    Gələcəkdə yeni tip əlavə etsən sadəcə burda dəyişiklik edirsən.
+    Factory Pattern
+    birbaşa User() yaratmaq əvəzinə bu factory-dən istifadə
+    Gələcəkdə yeni tip əlavə etsən burda et
     """
 
     @staticmethod
@@ -15,10 +15,7 @@ class UserFactory:
         email: str,
         role: str
     ) -> User:
-        """
-        Role-a görə doğru User obyekti yarat.
-        Validation da burda həll olunur.
-        """
+
         role_map = {
             "student": UserRole.STUDENT,
             "teacher": UserRole.TEACHER,

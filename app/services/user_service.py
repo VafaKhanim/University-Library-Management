@@ -72,6 +72,6 @@ class UserService:
 
     def delete_user(self, user_id: int):
         user = self.get_user_by_id(user_id)
-        #aktiv götürmə falan da yoxlanıla bilər
+        #aktiv götürmə falan da yoxlanıla bilər burda ona uygun siline ve ya silinmeye biler gelecekde
         self._db.delete(user)
         self._db.commit()

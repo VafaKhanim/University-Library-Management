@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 480
     DATABASE_URL: str
-    FIRST_ADMIN_USERNAME: str = "admin" #unutmayım deyə githuba yükləyəndə sil!
+    FIRST_ADMIN_USERNAME: str = "admin" #defauldu
     FIRST_ADMIN_PASSWORD: str = "admin123" #bunu da
 
     class Config:

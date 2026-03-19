@@ -11,7 +11,7 @@ engine = create_engine(
 SessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine)
 
 
-def get_db():  #Dependency injection üçün imiş
+def get_db():  #Dependency injection üçündü bura
     db: Session = SessionLocal()
     try:
         yield db

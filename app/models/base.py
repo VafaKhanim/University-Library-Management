@@ -5,7 +5,7 @@ from datetime import datetime
 
 class Base(DeclarativeBase):
     """
-    Bütün modellər bu classdən miras alır.
+    Parent classdı
     """
     pass
 

@@ -88,7 +88,6 @@ class BorrowService:
         self._db.commit()
         self._db.refresh(record)
 
-        # Observer Pattern — növbədəki istifadəçiyə xəbər vermək üçün
         self._queue.notify_next_user(book)
 
         return record
