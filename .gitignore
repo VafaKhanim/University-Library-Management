@@ -1,0 +1,28 @@
+# Virtual environment
+venv/
+env/
+
+# Database — real data, githuba getməsin
+library.db
+
+# Environment variables — şifrələr, secret key
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# PyCharm
+.idea/
+
+# pytest
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
