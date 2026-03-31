@@ -30,8 +30,8 @@ def return_book(
 
 @router.get("/active", response_model=BorrowListResponse)
 def get_active_borrows(
-    skip = Query(0, ge=0),
-    limit = Query(50, ge=1, le=100),
+    skip: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=100),
     db: Session = Depends(get_db),
     admin = Depends(get_current_admin)
 ):

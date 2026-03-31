@@ -24,8 +24,8 @@ def get_all_books(
     search = Query(None, description="Ad və ya müəllifə görə axtar"),
     genre = Query(None, description="Janra görə filter"),
     available_only = Query(False, description="Yalnız mövcud kitablar"),
-    skip = Query(0, ge=0),
-    limit = Query(50, ge=1, le=100),
+    skip: int = Query(0, ge=0),
+    limit: int = Query(50, ge=1, le=100),
     db: Session = Depends(get_db),
     admin = Depends(get_current_admin)
 ):
